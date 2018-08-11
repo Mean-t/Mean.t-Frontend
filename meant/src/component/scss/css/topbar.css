@@ -1,0 +1,34 @@
+.top_bar {
+  width: 100%;
+  border: solid black 1px;
+}
+
+.menuicon {
+  width: 32px;
+  height: 32px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.mainrogo {
+  position: absolute;
+  left: 50%;
+  margin-left: -56px;
+  margin-top: 20px;
+  width: 112px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.start_fund {
+  position: absolute;
+  margin: 30px;
+  cursor: pointer;
+}
+
+.lookupnumber {
+  margin: 30px;
+  cursor: pointer;
+  float: right;
+}
+/*# sourceMappingURL=topbar.css.map */
