@@ -10,4 +10,8 @@ const _GotoLookup = () => {
     window.location.href = "http://localhost:3000/lookup"
 }
 
-export { _GotoMain, _GotoLogin, _GotoLookup }
+const _SendImage = () => {
+    window.location.href = "http://localhost:3000/idea-send"
+}
+
+export { _GotoMain, _GotoLogin, _GotoLookup, _SendImage }
