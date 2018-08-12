@@ -1,0 +1,39 @@
+.send-idea {
+  border-top: #40CD9F solid 2px;
+  border-right: #40CD9F solid 2px;
+  border-bottom: #40CD9F solid 2px;
+  border-left: #40CD9F solid 2px;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 42vw;
+  position: relative;
+  left: 50%;
+  margin-left: -21vw;
+  margin-top: 20px;
+  height: 9vh;
+  font-size: 14.7pt;
+}
+
+.send-text {
+  padding: 50px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-weight: 160;
+}
+
+.send-image {
+  display: inline-block;
+  border-top: #40CD9F solid 0px;
+  border-right: #40CD9F solid 0px;
+  border-bottom: #40CD9F solid 0px;
+  border-left: #40CD9F solid 2px;
+  border-radius: 30px;
+  width: 8vw;
+  height: 100%;
+  float: right;
+}
+
+.image-airplane {
+  width: 30px;
+}
+/*# sourceMappingURL=sendidea.css.map */
