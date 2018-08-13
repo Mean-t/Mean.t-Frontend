@@ -16,24 +16,33 @@
 
 .send-text {
   padding: 50px;
-  padding-top: 0px;
+  padding-top: 17px;
   padding-bottom: 0px;
   font-weight: 160;
+  display: inline-block;
 }
 
 .send-image {
   display: inline-block;
-  border-top: #40CD9F solid 0px;
+  border-top: #40CD9F solid 2px;
   border-right: #40CD9F solid 0px;
-  border-bottom: #40CD9F solid 0px;
+  border-bottom: #40CD9F solid 2px;
   border-left: #40CD9F solid 2px;
   border-radius: 30px;
   width: 8vw;
+  position: relative;
+  margin-top: -2px;
   height: 100%;
   float: right;
 }
 
 .image-airplane {
-  width: 30px;
+  width: 3vw;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -1.5vw;
+  margin-top: -3.6vh;
 }
 /*# sourceMappingURL=sendidea.css.map */
