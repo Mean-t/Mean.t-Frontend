@@ -1,6 +1,9 @@
 .submain {
   background-color: #125757;
   border: solid 1px #40CD9F;
+  border-left: none;
+  border-right: none;
+  border-top: solid 1px transparent;
   color: #4EE7CD;
   width: 100%;
   height: 38vh;
