@@ -1,7 +1,56 @@
 .fund-list {
-  border: solid 1px black;
   width: 100%;
   height: 50%;
   margin: 18px 0px;
+  border: solid transparent 1px;
+}
+
+.fund-list .fund-ul {
+  width: 64%;
+  height: 34vh;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -32%;
+  margin-top: -17vh;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+}
+
+.fund-list .fund-ul .fund-li {
+  width: 12vw;
+  height: 30vh;
+  position: relative;
+  float: left;
+  margin: 0px 25px;
+  border: solid black 0.5px;
+  top: 50%;
+  margin-top: -15vh;
+}
+
+.fund-list .fund-ul .fund-li .fund-li-img_div {
+  border-bottom: solid 1px black;
+  height: 65%;
+}
+
+.fund-list .list_arrow_left {
+  width: 50px;
+  position: relative;
+  float: left;
+  margin-left: 160px;
+  top: -65px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.fund-list .list_arrow_right {
+  width: 50px;
+  position: relative;
+  float: right;
+  margin-right: 165px;
+  top: -65px;
+  display: inline-block;
+  cursor: pointer;
 }
 /*# sourceMappingURL=dresslist.css.map */
