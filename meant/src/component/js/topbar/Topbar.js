@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../scss/css/topbar.css';
 import Menuicon from '../../image/menu.png';
-import Mainrogo from '../../image/rogo.png';
+import Mainrogo from '../../image/Logo.png';
 
 const Topbar = ({Menu_onClick, Rogo_onClick, Topbar_text1, Topbar_text2}) => {
     return (
