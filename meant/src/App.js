@@ -13,12 +13,24 @@ import './App.css';
 
 class App extends Component {
 
+  number = 1;
+
   state = {
     MenuState : "menu-unshow",
-    background : "background-gray-unshow"
+    background : "background-gray-unshow",
+    id : 0,
+    number : 1,
+    dresslist : [
+      {id : 1, text : `${this.number}_오버핏/여자/오픈숄더`, image : `옷_${this.number}`},
+      {id : 2, text : `${this.number + 1}_오버핏/남자/오픈숄더`, image : `옷_${this.number + 1}`},
+      {id : 3, text : `${this.number + 2}_패딩/여자/숏패딩`, image : `옷_${this.number + 2}`},
+      {id : 4, text : `${this.number + 3}_패딩/남자/숏패딩`, image : `옷_${this.number + 3}`}
+    ]
   }
 
   render() {
+
+    // function_state
     const _OpenSideBar = () => {
       if (this.state.MenuState === "menu-unshow" || this.state.background === "background-gray-unshow") {
         this.setState({
@@ -31,6 +43,14 @@ class App extends Component {
           background: "background-gray-unshow"
         })
       }
+    }
+
+    const _Change_prev = () => {
+
+    }
+
+    const _Change_next = () => {
+
     }
 
     return (
@@ -55,7 +75,16 @@ class App extends Component {
           main = {<Main
             dresslist = {_GotoList}
             Change_contents = {<DressList
-              // 앙기
+              list_prev = {_Change_prev}
+              list_next = {_Change_next}
+              fund_text1 = {this.state.dresslist[this.state.id].text}
+              dress_number1 = {this.state.dresslist[this.state.id].image}
+              fund_text2 = {this.state.dresslist[this.state.id + 1].text}
+              dress_number2 = {this.state.dresslist[this.state.id + 1].image}
+              fund_text3 = {this.state.dresslist[this.state.id + 2].text}
+              dress_number3 = {this.state.dresslist[this.state.id + 2].image}
+              fund_text4 = {this.state.dresslist[this.state.id+ 3].text}
+              dress_number4 = {this.state.dresslist[this.state.id + 3].image}
             />}
           />}
           fotter = {<Fotter
