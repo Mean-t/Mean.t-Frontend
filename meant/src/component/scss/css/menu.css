@@ -8,6 +8,7 @@
   width: 20%;
   height: 200%;
   background-color: #FFFFFF;
+  z-index: 999;
 }
 
 #root > .Meant-Main > .template > .menu-show > .ul {
