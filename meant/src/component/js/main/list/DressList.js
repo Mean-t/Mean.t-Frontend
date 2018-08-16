@@ -20,7 +20,7 @@ class DressList extends Component { // 이제 img.js 알려져
         return dresslist.map(item => (
             <li className="fund-li">
                 <div className="fund-li-img_div">
-                    <img className="fund-li-img" src={this.props.image} alt={item.image}/>
+                    <img className="fund-li-img" src={this.props.image} alt={item.image_alt}/>
                 </div>
                 <span className="fund-text">{item.text}</span>
             </li>
