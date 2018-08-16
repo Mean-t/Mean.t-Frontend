@@ -31,23 +31,27 @@ class App extends Component {
     dresslist: [
       {
         id: 1,
-        text: `${this.number}_오버핏/여자/오픈숄더`,
-        image: `옷_${this.number}`
+        text: `${this.number}_오버핏/여자/오픈숄더/크롭티/원피스/투피스/소히`,
+        image_alt: `옷_${this.number}`,
+        list_image: ``
       },
       {
         id: 2,
         text: `${this.number + 1}_오버핏/남자/오픈숄더`,
-        image: `옷_${this.number + 1}`
+        image_alt: `옷_${this.number + 1}`,
+        list_image: ``
       },
       {
         id: 3,
         text: `${this.number + 2}_패딩/여자/숏패딩`,
-        image: `옷_${this.number + 2}`
+        image_alt: `옷_${this.number + 2}`,
+        list_image: ``
       },
       {
         id: 4,
         text: `${this.number + 3}_패딩/남자/숏패딩`,
-        image: `옷_${this.number + 3}`
+        image_alt: `옷_${this.number + 3}`,
+        list_image: ``
       }
     ]
   };
@@ -73,6 +77,18 @@ class App extends Component {
     const _Change_prev = () => {};
 
     const _Change_next = () => {};
+
+    const _Image = () => {
+      // axios.get("URL")
+      // .then(res => {
+      //   let _image = res.data./*블라블라*/image;
+      //   this.setState({
+      //     dresslist : [
+      //       list_image = `${_image}`
+      //     ]
+      //   })
+      // })
+    }
 
     return (
       <div className="Meant-Main">
@@ -109,9 +125,7 @@ class App extends Component {
                   list_prev={_Change_prev}
                   list_next={_Change_next}
                   dresslist={this.state.dresslist}
-                  image={this.state.dresslist.map(items => {
-                    items.image;
-                  })}
+                  image={_Image}
                 />
               }
             />
