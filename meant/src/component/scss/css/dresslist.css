@@ -34,6 +34,19 @@
   height: 65%;
 }
 
+.fund-list .fund-ul .fund-li .fund-li-img_div .fund-li-img {
+  padding: 8px;
+  width: 10vw;
+  height: 15vh;
+}
+
+.fund-list .fund-ul .fund-li .fund-text {
+  position: relative;
+  padding: 6px;
+  display: inline-block;
+  font-size: 12pt;
+}
+
 .fund-list .list_arrow_left {
   width: 50px;
   position: relative;
