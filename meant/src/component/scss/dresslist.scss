@@ -29,6 +29,19 @@
             .fund-li-img_div {
                 border-bottom: solid 1px #40CD9F;
                 height: 65%;
+
+                .fund-li-img {
+                    padding: 8px;
+                    width: 10vw;
+                    height: 15vh;
+                }
+            }
+
+            .fund-text {
+                position: relative;
+                padding: 6px;
+                display: inline-block;
+                font-size: 12pt;
             }
         }
     }
