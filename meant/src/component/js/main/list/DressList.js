@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../../../scss/css/dresslist.css'
 import { leftArrow, rightArrow } from '../../../image/img';
 
-class DressList extends Component { // 이제 img.js 알려져
+class DressList extends Component { 
     render() { 
         const { list_prev, list_next } = this.props;
         return (
