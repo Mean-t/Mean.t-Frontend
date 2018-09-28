@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,UAAU,CAAC;EACP,MAAM,EAAE,eAAe;EACvB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,GAAG;EACX,MAAM,EAAE,QAAS;CACpB",
-    "sources": [
-        "../idealist.scss"
-    ],
-    "names": [],
-    "file": "idealist.css"
-}

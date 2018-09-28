@@ -1,0 +1,95 @@
+{
+  "name": "redux-actions",
+  "version": "2.6.1",
+  "description": "Flux Standard Action utlities for Redux",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "precommit": "lint-staged",
+    "format": "prettier --write \"**/*.{js,md}\"",
+    "format:check": "prettier --list-different \"**/*.{js,md}\"",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:umd": "cross-env NODE_ENV=development webpack",
+    "build:umd:min": "cross-env NODE_ENV=production webpack && es-check es5 dist/redux-actions.min.js",
+    "build": "run-s clean && run-p build:**",
+    "clean": "rimraf coverage dist es lib",
+    "lint": "xo",
+    "prepublishOnly": "run-s build",
+    "test": "jest"
+  },
+  "files": [
+    "es",
+    "lib",
+    "dist"
+  ],
+  "keywords": [
+    "flux",
+    "redux",
+    "fsa",
+    "actions"
+  ],
+  "author": "Andrew Clark <acdlite@me.com>",
+  "bugs": {
+    "url": "https://github.com/redux-utilities/redux-actions/issues"
+  },
+  "homepage": "https://github.com/redux-utilities/redux-actions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redux-utilities/redux-actions.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babel-core": "^6.7.7",
+    "babel-jest": "^22.4.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^2.0.0",
+    "es-check": "^2.0.4",
+    "eslint-config-jest-files": "^0.1.1",
+    "eslint-config-unicorn-camelcase": "^0.1.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "flux-standard-action": "^1.0.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "lint-staged": "^7.0.4",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.12.1",
+    "rimraf": "^2.5.3",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11",
+    "xo": "^0.20.3"
+  },
+  "dependencies": {
+    "invariant": "^2.2.1",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.curry": "^4.1.1",
+    "reduce-reducers": "^0.1.0"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "extends": [
+      "unicorn-camelcase",
+      "jest-files"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "trailingComma": "none"
+  },
+  "jest": {
+    "collectCoverage": true
+  },
+  "lint-staged": {
+    "*.{js,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
