@@ -6,15 +6,17 @@ import { leftButton, rightButton } from '../../assets/assets';
 class DressList extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      list : [1, 2, 3, 4],
-      list2 : [5, 6, 7, 8],
-      list3 : [9, 10, 11, 12],
-      list4 : [13, 14, 15, 16],
-      list5 : [17, 18, 19, 20]
+    this.state = {
+      // list의 각 숫자마다 axois로 불러온 list배열에 해당하는 값을 부여. (text, index, img) 
+      list : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+      limitMin : [1, 5, 9, 13, 17],
+      limitMax : [4, 8, 12, 16, 20],
+      count : 0
      }
   }
   render() { 
+    const { list, limitMin, limitMax, count } = this.state;
+
     return ( 
       <Container>
         <Title>Meant와 함께 만드는 옷들</Title>
@@ -22,15 +24,15 @@ class DressList extends Component {
         <div className='filter'></div>
 
         <BundleList>
-          <Arrow src={leftButton} art='왼쪽 화살표'/>
+          <Arrow onClick={() => (count !== 0 ? this.setState({count : count - 1}) : null)} src={leftButton} art='왼쪽 화살표'/>
           <div className='filter'></div>
           <ListContents>
-            {this.state.list.map(contents => (
-              <Content state={contents}/>
+            {list.map(contents => (
+              contents >= limitMin[count] && contents <= limitMax[count] ? <Content state={contents}/> : null
             ))}
           </ListContents>
           <div className='filter'></div>
-          <Arrow src={rightButton} art='오른쪽 화살표'/>
+          <Arrow onClick={() => (count !== 4 ? this.setState({count : count + 1}) : null)} src={rightButton} art='오른쪽 화살표'/>
         </BundleList>
 
         <div className='filter'></div>
@@ -44,18 +46,19 @@ class DressList extends Component {
 }
 
 const Content = ({state}) => {
+  console.log(state)
   return(
-    state !== 4 ? 
+    state !== 4 | 8 | 12 | 16 | 20 ? 
     <ContentContainer true>
       <ContentImage src={leftButton} alt={`${state}번째 사진`} />
       <ContentMessage>
-        <ContentText>오예 18글자 넘으면 ...된다 오예오에오예오예오예</ContentText>
+        <ContentText>{state}_오예 18글자 넘으면 ...된다 오예오에오예오예오예</ContentText>
       </ContentMessage>
     </ContentContainer> : 
     <ContentContainer false>
       <ContentImage src={leftButton} alt={`${state}번째 사진`} />
       <ContentMessage>
-        <ContentText>오예 18글자 넘으면 ...된다 오예오에오예오예오예</ContentText>
+        <ContentText>{state}_오예 18글자 넘으면 ...된다 오예오에오예오예오예</ContentText>
       </ContentMessage>
     </ContentContainer>
   );
@@ -93,6 +96,7 @@ const Arrow = styled.img`
   width : 37px;
   height : 105px;
   align-self : center;
+  cursor : pointer;
 `;
 
 const ContentContainer = styled.div`
