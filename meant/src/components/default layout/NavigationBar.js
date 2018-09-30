@@ -61,9 +61,8 @@ const MenuContainer = styled.div`
 const MenuBar = styled.div`
   background-color : #FFFFFF;
   width : 440px;
-  height : 2146px;
+  height : 2145px;
   border-top : solid 1px #707070;
-  z-index : 9999;
 `;
 
 const MenuContent = styled.div`
