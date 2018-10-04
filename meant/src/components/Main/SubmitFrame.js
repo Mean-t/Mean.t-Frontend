@@ -10,7 +10,7 @@ const SubmitFrame = () => {
       <Contents>
         <MessageContent>Meant와 함께 만들어가는 좀더 나은 옷들</MessageContent>
         <div className='filter'></div>
-        <Link id='SendIdeaLink' to={'login'}>
+        <Link id='SendIdeaLink' to={'member/login'}>
           <SendContent>
             <SendMessage>당신의 아이디어를 보내보세요</SendMessage>
             <div className='filter'></div>
@@ -70,7 +70,7 @@ const SendMessage = styled.span`
 const SendButton = styled.div`
   width : 184px;
   height : 101px;
-  border : 3px solid #4EE7CD;
+  border : 3px solid #40CD9F;
   border-radius : 60px;
   margin : -3px;
   display : flex;
