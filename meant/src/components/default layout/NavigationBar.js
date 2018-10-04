@@ -8,7 +8,7 @@ class NavigationBar extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      onMenu : false
+      onMenu : false,
      }
   }
   render() {
@@ -23,25 +23,25 @@ class NavigationBar extends Component {
               <MenuContent><Link onClick={() => this.setState({onMenu : !onMenu})} to='/idaes'>아이디어들 살펴보기</Link></MenuContent>
               <MenuContent><Link onClick={() => this.setState({onMenu : !onMenu})} to='/funding'>펀딩들 살펴보기</Link></MenuContent>
               <MenuContent><Link onClick={() => this.setState({onMenu : !onMenu})} to='/mypage'>내 펀딩들</Link></MenuContent>
-              <MenuContent><Link onClick={() => this.setState({onMenu : !onMenu})} to='/login'>로그인</Link></MenuContent>
+              <MenuContent><Link onClick={() => this.setState({onMenu : !onMenu})} to={'/member/login'}>로그인</Link></MenuContent>
             </MenuBar>
             <div style={{cursor : 'pointer'}} className='filter' onClick={() => this.setState({onMenu : !onMenu})}></div>
           </MenuContainer>
         }
         <NaviLink>
-          <Link to='/login'>펀딩시작하기</Link>
+          <Link onClick={() => this.setState({onMenu : false})} to='/login'>펀딩시작하기</Link>
         </NaviLink>
 
         <div className='filter'></div>
 
-        <Link id='logoButton' to='/'>
+        <Link onClick={() => this.setState({onMenu : false})} id='logoButton' to='/'>
           <LogoButton src={Logo} alt="로고버튼"/>
         </Link>
 
         <div className='filter'></div>
 
         <NaviLink>
-          <Link to='number-founding'>주문번호 조회</Link>
+          <Link onClick={() => this.setState({onMenu : false})} to='number-founding'>주문번호 조회</Link>
         </NaviLink>
       </Container>
     );
@@ -81,6 +81,8 @@ const Container = styled.div`
   height : 116px;
   display : flex;
   font-size : 25px;
+  box-shadow: 0px 1px 18px #aaaaaa;
+  z-index : 9999px;
 `;
 
 const MenuButton = styled.img`
