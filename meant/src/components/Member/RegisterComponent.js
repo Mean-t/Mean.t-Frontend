@@ -64,8 +64,8 @@ class RegisterComponent extends Component {
 
           {/* 회원가입 버튼 */}
           <Link onClick={() => 
-            password !== passwordConfirm 
-            ? null : alert('비밀번호가 다릅니다.') } to={password === passwordConfirm ? '/' : '/member/join_check'}>
+              (password || passwordConfirm !== '') && (password !== passwordConfirm) ? alert('비밀번호가 틀렸습니다.') : 
+              (email | password | passwordConfirm === '') || (name === '') ? alert('회원정보를 입력해주세요.') : null } to={(password !== passwordConfirm) || (email | password | passwordConfirm === '') || (name === '') ? '/member/join_check' : '/'}>
             <RegisterButton>
               <ButtonText>가입하기</ButtonText>
             </RegisterButton>
