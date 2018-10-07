@@ -29,7 +29,7 @@ class NavigationBar extends Component {
           </MenuContainer>
         }
         <NaviLink>
-          <Link onClick={() => this.setState({onMenu : false})} to='/login'>펀딩시작하기</Link>
+          <Link onClick={() => this.setState({onMenu : false})} to='/member/login'>펀딩시작하기</Link>
         </NaviLink>
 
         <div className='filter'></div>
