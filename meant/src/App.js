@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Main, Login, Register } from './container/index';
+import { Main, Login, Register, CreateFunding } from './container/index';
 import NavigationBar from './components/default layout/NavigationBar';
 
 class App extends Component {
@@ -14,6 +14,7 @@ class App extends Component {
                 <Route path='/' component={Main} exact/>
                 <Route path='/member/login' component={Login} exact/>
                 <Route path='/member/join_check' component={Register} exact/>
+                <Route path='/create_idea' component={CreateFunding} exact/>
               </Switch>
           </React.Fragment>
         </BrowserRouter>
