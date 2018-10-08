@@ -41,7 +41,7 @@ class NavigationBar extends Component {
         <div className='filter'></div>
 
         <NaviLink>
-          <Link onClick={() => this.setState({onMenu : false})} to='number-founding'>주문번호 조회</Link>
+          <Link onClick={() => this.setState({onMenu : false})} to='/order_number/reference'>주문번호 조회</Link>
         </NaviLink>
       </Container>
     );
