@@ -10,6 +10,7 @@ class SubmitFrame extends Component {
      }
   }
   render() {
+    
   const handleFile = (e) => {
     this.setState({file : e.target.file})
   };
