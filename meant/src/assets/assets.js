@@ -5,6 +5,7 @@ import leftButton from './leftButton.JPG';
 import rightButton from './rightButton.JPG';
 import loginMessage from './loginMessage.JPG';
 import registerMessage from './registerMessage.JPG';
+import select from './selcter.JPG';
 
 export {
   Logo,
@@ -13,6 +14,7 @@ export {
   leftButton,
   rightButton,
   loginMessage,
-  registerMessage
+  registerMessage,
+  select
   // 더 있으면 추가
 };
