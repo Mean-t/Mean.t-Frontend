@@ -16,7 +16,7 @@ class App extends Component {
                 <Route path='/member/join_check' component={Register} exact/>
                 <Route path='/funding/create_idea' component={CreateFunding} exact/>
                 <Route path='/funding/start' component={StartFunding} exact/>
-                <Route path='/OrderNumber/reference' component={OrderNumber} exact/>
+                <Route path='/order_number/reference' component={OrderNumber} exact/>
               </Switch>
           </React.Fragment>
         </BrowserRouter>
