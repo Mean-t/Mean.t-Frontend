@@ -7,7 +7,7 @@ class Select extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      OrderNumber : '',
+      OrderNumber : 0,
       SelectOnClick : false
      }
   }
@@ -24,7 +24,7 @@ class Select extends Component {
         {SelectOnClick === false ?
           <SubmitFrame false>
             <InputText onChange={handleNumber} type='text' placeholder="주문번호" />
-            <SelectImage onClick={() => OrderNumber !== '' ? this.setState({SelectOnClick : !SelectOnClick}) : alert('주문번호를 입력해주세요.')} src={select} alt='돋보기'/>
+            <SelectImage onClick={() => OrderNumber !== '' ? OrderNumber >= 100000 && OrderNumber <= 999999 ? this.setState({SelectOnClick : !SelectOnClick}) : alert('정확한 번호를 입력해주세요.') : alert('주문번호를 입력해주세요.')} src={select} alt='돋보기'/>
           </SubmitFrame> :
 
           <SubmitFrame true>
@@ -34,7 +34,44 @@ class Select extends Component {
             <div className='filter'></div>
           
             <Content>
+              <PerfectionTexts>
+                <Text>대기</Text>
+                <div className='filter'></div>
+                <Text>입금 확인</Text>
+                <div className='filter'></div>
+                <Text>제작 확정</Text>
+                <div className='filter'></div>
+                <Text>제작 완료</Text>
+                <div className='filter'></div>
+                <Text>배송 완료</Text>
+              </PerfectionTexts>
 
+              <div className='filter'></div>
+
+              <Model>
+                <Line></Line>
+                <CircleCollection>
+                  <CircleLine>
+                    <Circle />
+                  </CircleLine>
+                  <div className='filter'></div>
+                  <CircleLine>
+                    <Circle />
+                  </CircleLine>
+                  <div className='filter'></div>
+                  <CircleLine>
+                    <Circle />
+                  </CircleLine>
+                  <div className='filter'></div>
+                  <CircleLine>
+                    <Circle />
+                  </CircleLine>
+                  <div className='filter'></div>
+                  <CircleLine>
+                    <Circle />
+                  </CircleLine>
+                </CircleCollection>
+              </Model>
             </Content>
 
             <div className='filter'></div>
@@ -87,13 +124,64 @@ const Text = styled.span`
     if (props.title) return '40px';
     else if (props.number) return '70px';
     else return '30px';
-  }}
+  }};
 `;
 
 const Content = styled.div`
   width : 1492px;
   height : 82px;
   border : 1px solid black;
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items : center;
+`;
+
+const PerfectionTexts = styled.div`
+  width : 946px;
+  height : 34px;
+  display : flex;
+`;
+
+const Model = styled.div`
+  width : 1492px;
+  height : 40px;
+  position : relative;
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items : center;
+`;
+
+const CircleCollection = styled.div`
+  width : 900px;
+  height : 40px;
+  display : flex;
+  position : absolute;
+`;
+
+const CircleLine = styled.div`
+  width : 37px;
+  height : 37px;
+  border : 3px solid #40CD9F;
+  border-radius : 60px;
+  display : flex;
+  justify-content: center;
+  align-items : center;
+`;
+
+const Circle = styled.div`
+  width : 30px;
+  height : 30px;
+  background-color : #40CD9F;
+  border-radius : 60px;
+`;
+
+const Line = styled.div`
+  width : 1492px;
+  height : 11px;
+  border-radius : 60px;
+  background-color : #40CD9F;
 `;
 
 const ReturnMain = styled.div`
