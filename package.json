@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "animate.css": "^3.7.0",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
