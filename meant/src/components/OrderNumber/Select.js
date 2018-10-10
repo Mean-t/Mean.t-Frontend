@@ -8,23 +8,41 @@ class Select extends Component {
     super(props);
     this.state = { 
       OrderNumber : 0,
-      SelectOnClick : false
+      SelectOnClick : false,
+      PerfectionGauge : 0
      }
   }
-  render() { 
 
-    const handleNumber = (e) => {
-      this.setState({OrderNumber : e.target.value});
-    };
+  handleNumber = (e) => {
+    this.setState({OrderNumber : e.target.value});
+  };
+
+  press = (e) => {
 
     const { OrderNumber, SelectOnClick } = this.state;
+
+    if(e.key === "Enter")
+      if(OrderNumber !== 0) {
+        if(OrderNumber >= 100000 && OrderNumber <= 999999) {
+          this.setState({SelectOnClick : !SelectOnClick});
+        } else {
+          alert('정확한 번호를 입력해주세요.');
+        }
+      } else {
+        alert('주문번호를 입력해주세요.');
+      }
+  };
+
+  render() {
+
+    const { OrderNumber, SelectOnClick, PerfectionGauge } = this.state;
 
     return ( 
       <React.Fragment>
         {SelectOnClick === false ?
           <SubmitFrame false>
-            <InputText onChange={handleNumber} type='text' placeholder="주문번호" />
-            <SelectImage onClick={() => OrderNumber !== '' ? OrderNumber >= 100000 && OrderNumber <= 999999 ? this.setState({SelectOnClick : !SelectOnClick}) : alert('정확한 번호를 입력해주세요.') : alert('주문번호를 입력해주세요.')} src={select} alt='돋보기'/>
+            <InputText onKeyPress={this.press} onChange={this.handleNumber} type='text' placeholder="주문번호" />
+            <SelectImage onClick={() => OrderNumber !== 0 ? OrderNumber >= 100000 && OrderNumber <= 999999 ? this.setState({SelectOnClick : !SelectOnClick}) : alert('정확한 번호를 입력해주세요.') : alert('주문번호를 입력해주세요.')} src={select} alt='돋보기'/>
           </SubmitFrame> :
 
           <SubmitFrame true>
@@ -35,41 +53,61 @@ class Select extends Component {
           
             <Content>
               <PerfectionTexts>
-                <Text>대기</Text>
-                <div className='filter'></div>
-                <Text>입금 확인</Text>
-                <div className='filter'></div>
-                <Text>제작 확정</Text>
-                <div className='filter'></div>
-                <Text>제작 완료</Text>
-                <div className='filter'></div>
-                <Text>배송 완료</Text>
+                <Text p0>대기</Text>
+                <Text p25>입금 확인</Text>
+                <Text p50>제작 확정</Text>
+                <Text p75>제작 완료</Text>
+                <Text p100>배송 완료</Text>
               </PerfectionTexts>
 
               <div className='filter'></div>
 
               <Model>
-                <Line></Line>
+                {/* 라인 */}
+                <Line />
+
+                {/* 동그라미 */}
                 <CircleCollection>
-                  <CircleLine>
+                {PerfectionGauge >= 0 ?
+                  <CircleLine p0>
                     <Circle />
-                  </CircleLine>
-                  <div className='filter'></div>
-                  <CircleLine>
+                  </CircleLine> : 
+                  <DelCircleLine p0>
                     <Circle />
-                  </CircleLine>
-                  <div className='filter'></div>
-                  <CircleLine>
+                  </DelCircleLine>
+                }
+                {PerfectionGauge >= 25 ?
+                  <CircleLine p25>
                     <Circle />
-                  </CircleLine>
-                  <div className='filter'></div>
-                  <CircleLine>
+                  </CircleLine> : 
+                  <DelCircleLine p25>
                     <Circle />
-                  </CircleLine>
-                  <div className='filter'></div>
-                  <CircleLine>
+                  </DelCircleLine>
+                }
+                {PerfectionGauge >= 50 ?
+                  <CircleLine p50>
                     <Circle />
-                  </CircleLine>
+                  </CircleLine> : 
+                  <DelCircleLine p50>
+                    <Circle />
+                  </DelCircleLine>
+                }
+                {PerfectionGauge >= 75 ?
+                  <CircleLine p75>
+                    <Circle />
+                  </CircleLine> : 
+                  <DelCircleLine p75>
+                    <Circle />
+                  </DelCircleLine>
+                }
+                {PerfectionGauge >= 100 ?
+                  <CircleLine p100>
+                    <Circle />
+                  </CircleLine> : 
+                  <DelCircleLine p100>
+                    <Circle />
+                  </DelCircleLine>
+                }
                 </CircleCollection>
               </Model>
             </Content>
@@ -125,22 +163,40 @@ const Text = styled.span`
     else if (props.number) return '70px';
     else return '30px';
   }};
+  position : ${props => {
+    if(props.title || props.number) return 'none';
+    else return 'absolute';
+  }};
+  left : ${props => {
+    if(props.p0) return '2%';
+    else if(props.p25) return '22%';
+    else if(props.p50) return '46%';
+    else if(props.p75) return '70%';
+    else if(props.p100) return '93.5%';
+    else return 'none';
+  }};
+  width : ${props => {
+    if(props.p100) return '190px';
+    else return 'none';
+  }};
 `;
 
 const Content = styled.div`
   width : 1492px;
   height : 82px;
-  border : 1px solid black;
   display : flex;
   flex-direction: column;
   justify-content: center;
   align-items : center;
+  position : relative;
 `;
 
 const PerfectionTexts = styled.div`
   width : 946px;
   height : 34px;
   display : flex;
+  position : absolute;
+  top : 0%;
 `;
 
 const Model = styled.div`
@@ -168,6 +224,19 @@ const CircleLine = styled.div`
   display : flex;
   justify-content: center;
   align-items : center;
+  position : absolute;
+  left : ${props => {
+    if(props.p0) return '0%';
+    else if(props.p25) return '25%';
+    else if(props.p50) return '50%';
+    else if(props.p75) return '75%';
+    else if(props.p100) return '100%';
+    else return 'none';
+  }};
+`;
+
+const DelCircleLine = CircleLine.extend`
+  border : none;
 `;
 
 const Circle = styled.div`
