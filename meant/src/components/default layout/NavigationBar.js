@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/NavigationBar.css';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import { Logo, menuButton } from '../../assets/assets';
 
 class NavigationBar extends Component {
@@ -48,6 +48,15 @@ class NavigationBar extends Component {
   };
 }
 
+const pules = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const MenuContainer = styled.div`
   width : 100%;
   height : 2146px;
@@ -56,6 +65,7 @@ const MenuContainer = styled.div`
   top : 116px;
   background-color: rgba(8, 8, 8, 53%);
   z-index : 9998;
+  animation : ${pules} 0.5s;
 `;
 
 const MenuBar = styled.div`
