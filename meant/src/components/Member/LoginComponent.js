@@ -33,7 +33,7 @@ class LoginComponent extends Component {
 
           {/* 로그인 입력 */}
           <LoginContent style={{ marginBottom : '27px'}}>
-            <LoginInput pattern='\w+\@\w+\.\w+' title='이메일을 입력해주세요.' onChange={handleEmail} type="text" placeholder="E-Mail" />
+            <LoginInput pattern='/(\w+)@(\w+)\.(\w+)/' title='이메일을 입력해주세요.' onChange={handleEmail} type="email" placeholder="E-Mail" />
           </LoginContent>
 
           {/* 비밀번호 입력 */}
@@ -44,7 +44,7 @@ class LoginComponent extends Component {
           <div className='filter'></div>
         
           {/* 로그인 버튼 */}
-          <Link onClick={() => (email || password) | (email && password) === '' ? alert('이메일 및 비밀번호를 입력해주세요.') : null} to={email && password !== '' ? '/' : '/member/login'}>
+          <Link onClick={() => (email && password !== '') && /(\w+)@(\w+)\.(\w+)/.test(email) ? null : alert('이메일 및 비밀번호를 입력해주세요.') } to={(email && password !== '') && /(\w+)@(\w+)\.(\w+)/.test(email) ? '/' : '/member/login'}>
             <LoginButton>
               <ButtonText>로그인</ButtonText>
             </LoginButton>
