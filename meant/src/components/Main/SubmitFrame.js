@@ -8,7 +8,7 @@ const SubmitFrame = () => {
   return(
     <Container>
       <Contents>
-        <MessageContent>Meant와 함께 만들어가는 좀더 나은 옷들</MessageContent>
+        <MessageContent>Meant와 함께 만들어가는 좀 더 나은 옷들</MessageContent>
         <div className='filter'></div>
         <Link id='SendIdeaLink' to={'member/login'}>
           <SendContent>
@@ -43,7 +43,7 @@ const Contents = styled.div`
 `
 
 const MessageContent = styled.span`
-  width : 1012px;
+  width : 1062px;
   height : 66px;
   font-size : 59px;
   color : #4EE7CD;
