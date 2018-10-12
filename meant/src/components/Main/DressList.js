@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { leftButton, rightButton } from '../../assets/assets';
 
@@ -14,8 +14,9 @@ class DressList extends Component {
       count : 0
      }
   }
+
   render() { 
-    const { list, limitMin, limitMax, count } = this.state;
+    const { list, limitMin, limitMax, count } = this.state;    
 
     return ( 
       <Container>
