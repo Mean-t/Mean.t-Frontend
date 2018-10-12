@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import CircleContents from './CircleContents';
 import { Link } from 'react-router-dom';
 import { select } from '../../assets/assets'
@@ -84,6 +84,27 @@ class Select extends Component {
   }
 }
 
+const pulse = keyframes`
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+`
+
+const fadein = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const SubmitFrame = styled.div`
   width : ${props => {if (props.false) return '993px'; else return '1492px'}};
   height : ${props => {if (props.false) return '70px'; else return '574px'}};
@@ -91,6 +112,10 @@ const SubmitFrame = styled.div`
   display : flex;
   flex-direction: ${props => {if (props.false) return 'none'; else return 'column'}};
   align-items : center;
+  animation : ${props => {
+    if (props.false) return `${pulse} 1s`;
+    else return `${fadein} 0.6s`;
+  }}
 `;
 
 const InputText = styled.input`
