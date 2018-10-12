@@ -15,3 +15,22 @@ a {
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: gray; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(39, 150, 131);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(39, 150, 131);
+}
