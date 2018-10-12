@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { registerMessage } from '../../assets/assets';
 
@@ -13,6 +13,7 @@ class RegisterComponent extends Component {
       name : ''
      }
   }
+  
   render() { 
 
     const handleEmail = (e) => {
@@ -86,6 +87,16 @@ const Wrapper = styled.div`
   align-items : center;
 `;
 
+const fadein = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
 const Form = styled.form`
   width : 514px;
   height : 614px;
@@ -93,6 +104,7 @@ const Form = styled.form`
   display : flex;
   flex-direction: column;
   align-items : center;
+  animation : ${fadein} 0.6s;
 `;
 
 const Title = styled.img`
