@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { loginMessage } from '../../assets/assets';
 // import axios from 'axios';
@@ -33,7 +33,7 @@ class LoginComponent extends Component {
 
           {/* 로그인 입력 */}
           <LoginContent style={{ marginBottom : '27px'}}>
-            <LoginInput onChange={handleEmail} type="email" placeholder="E-Mail" />
+            <LoginInput pattern='\w+\@\w+\.\w+' title='이메일을 입력해주세요.' onChange={handleEmail} type="text" placeholder="E-Mail" />
           </LoginContent>
 
           {/* 비밀번호 입력 */}
@@ -71,11 +71,22 @@ const Wrapper = styled.div`
   align-items : center;
 `;
 
+const fadein = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
 const Check = styled.span`
   width : 196px;
   height : 17px;
   display : block;
   margin : 19px;
+  animation : ${fadein} 0.6s;
 `;
 
 const Form = styled.form`
@@ -86,6 +97,7 @@ const Form = styled.form`
   display : flex;
   flex-direction: column;
   align-items : center;
+  animation : ${fadein} 0.6s;
 `;
 
 const Title = styled.img`
