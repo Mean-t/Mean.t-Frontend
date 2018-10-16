@@ -211,6 +211,11 @@ const ReturnMain = styled.div`
   color : #40CD9F;
   border : 3px solid #40CD9F;
   border-radius : 60px;
+  transition : 0.3s;
+  &:hover {
+    color : #FFFFFF;
+    background-color : #40CD9F;
+  }
 `;
 
 export default Select;
