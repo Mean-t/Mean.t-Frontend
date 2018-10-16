@@ -121,11 +121,16 @@ const RegisterButton = styled.div`
   display : flex;
   justify-content: center;
   align-items : center;
+  color : #125757;
+  transition : 0.3s;
+  &:hover {
+    color : #FFFFFF;
+    background-color : #40CD9F;
+  }
 `
 
 const ButtonText = styled.span`
   display : inline-block;
-  color : #125757;
   font-size : 20px;
 `
 
