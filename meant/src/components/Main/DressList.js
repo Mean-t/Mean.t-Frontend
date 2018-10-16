@@ -147,6 +147,11 @@ const InformationButton = styled.div`
   color : black
   font-size : 30px;
   align-items : center;
+  transition : 0.3s;
+  &:hover {
+    color : #FFFFFF;
+    background-color : #40CD9F;
+  }
 `;
 
 export default DressList;
