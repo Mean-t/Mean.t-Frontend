@@ -86,6 +86,11 @@ const SendButton = styled.label`
   justify-content: center;
   align-items : center;
   margin-bottom : 54px;
+  transition : 0.3s;
+  &:hover {
+    color : #FFFFFF;
+    background-color : #40CD9F;
+  }
 `;
 
 const InputFile = styled.input`
@@ -135,6 +140,11 @@ const ClearButton = styled.div`
   align-items : center;
   color : #40CD9F;
   font-size : 30px;
+  transition : 0.3s;
+  &:hover {
+    color : #FFFFFF;
+    background-color : #40CD9F;
+  }
 `;
 
 export default SubmitFrame;
