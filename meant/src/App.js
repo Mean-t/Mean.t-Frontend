@@ -11,12 +11,12 @@ class App extends Component {
           <React.Fragment>
             <NavigationBar />
               <Switch>
-                <Route path='/' component={Main} exact/>
-                <Route path='/member/login' component={Login} exact/>
-                <Route path='/member/join_check' component={Register} exact/>
-                <Route path='/funding/create_idea' component={CreateFunding} exact/>
-                <Route path='/funding/start' component={StartFunding} exact/>
-                <Route path='/order_number/reference' component={OrderNumber} exact/>
+                <Route path='/' component={Main} exact/> {/* 메인 페이지 */}
+                <Route path='/member/login' component={Login} exact/> {/* 로그인 페이지 */}
+                <Route path='/member/join_check' component={Register} exact/> {/* 회원가입 페이지 */}
+                <Route path='/funding/create_idea' component={CreateFunding} exact/> {/* 아이디어 보내기 */}
+                <Route path='/funding/start' component={StartFunding} exact/> {/* 펀딩 시작하기 */}
+                <Route path='/order_number/reference' component={OrderNumber} exact/> {/* 주문번호 조회 */}
               </Switch>
           </React.Fragment>
         </BrowserRouter>
