@@ -6,11 +6,13 @@ body {
   font-family:'NanumSquareRound',sans-serif;
 }
 
+/* 모든 a태그의 파란줄 및 클릭 후 보라색 변함 제거 */
 a {
   text-decoration: none;
   color: black;
 }
 
+/* 공간 체우기 용도 */
 .filter {
   -ms-flex-positive: 1;
   flex-grow: 1;
