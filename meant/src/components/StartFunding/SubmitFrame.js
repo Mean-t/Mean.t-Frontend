@@ -6,16 +6,24 @@ class SubmitFrame extends Component {
   constructor(props) {
     super(props);
     this.state = { 
+      titleFile : {},
       file : {}
      }
   }
-  render() {
-  const handleFile = (e) => {
+
+  handleFile_Title = (e) => {
     this.setState({file : e.target.file})
   };
 
+  render() {
+
+    const { titleFile } = this.state;
+
     return(
       <Container>
+        <SendButton id='title_file_label' title for="title_file">{titleFile === {} ? '+ 타이틀 이미지 추가' : '<img src={titleFile} />'}</SendButton>
+        <InputFile onChange={this.handleFile_Title} files={titleFile} accept='image/*' type='file' id='title_file'></InputFile>
+        
         <InputText type='text' placeholder="제목" />
         
         <InputText type='text' placeholder="해시태그 추가" />
@@ -28,8 +36,8 @@ class SubmitFrame extends Component {
 
         <InputText type='text' placeholder="계좌번호" />
 
-        <SendButton for="ex_file">+ 파일 첨부</SendButton>
-        <InputFile onChange={handleFile} type="file" id="ex_file" /> 
+        {/* <SendButton for="ex_file">+ 파일 첨부</SendButton>
+        <InputFile onChange={handleFile} type="file" id="ex_file" />  */}
         
         <TextBlock>
           <TextArea type="text" placeholder="자세한 설명을 써 주시면 디자이너에게 도움이 된답니다!" />
@@ -50,6 +58,7 @@ const Container = styled.div`
   height : 1575px;
   display : flex;
   flex-direction: column;
+  margin-top : 100px;
 `;
 
 const InputText = styled.input`
@@ -73,19 +82,24 @@ const InputText = styled.input`
 
 const SendButton = styled.label`
   display: inline-flex;
-  padding: 17px 28px; 
   color: #40CD9F; 
-  font-size: 30px; 
+  font-size: 22px; 
   line-height: normal; 
   vertical-align: middle; 
   background-color: #FFFFFF;
   cursor: pointer; 
   border: 3px solid #40CD9F; 
-  border-radius: 60px;
-  width : 168px;
+  position : relative;
+  left : 50%;
+  margin-left : -136.5px;
+  width : ${props => {
+    if(props.title) return '273px';
+  }};
+  height : ${props => {
+    if(props.title) return '273px';
+  }}
   justify-content: center;
   align-items : center;
-  margin-bottom : 54px;
   transition : 0.3s;
   &:hover {
     color : #FFFFFF;
