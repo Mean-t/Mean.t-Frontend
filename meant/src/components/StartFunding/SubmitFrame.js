@@ -7,22 +7,27 @@ class SubmitFrame extends Component {
     super(props);
     this.state = { 
       titleFile : {},
-      file : {}
+      coverfile : {}
      }
   }
 
   handleFile_Title = (e) => {
-    this.setState({file : e.target.file})
+    this.setState({titleFile : e.target.files[0]})
+  };
+
+  handleFile_Cover = (e) => {
+    this.setState({coverFile : e.target.files})
   };
 
   render() {
 
     const { titleFile } = this.state;
+    // const 
 
     return(
       <Container>
-        <SendButton id='title_file_label' title for="title_file">{titleFile === {} ? '+ 타이틀 이미지 추가' : '<img src={titleFile} />'}</SendButton>
-        <InputFile onChange={this.handleFile_Title} files={titleFile} accept='image/*' type='file' id='title_file'></InputFile>
+        <SendButton id='title_file_label' title for="title_file">{titleFile === {} ? '+ 타이틀 이미지 추가' : <img src={titleFile} />}</SendButton>
+        <InputFile onClick={e => e.target.value = null} onChange={e => this.handleFile_Title(e)} files={titleFile} accept='image/*' type='file' ref='title_file' id='title_file'></InputFile>
         
         <InputText type='text' placeholder="제목" />
         
@@ -36,9 +41,11 @@ class SubmitFrame extends Component {
 
         <InputText type='text' placeholder="계좌번호" />
 
-        {/* <SendButton for="ex_file">+ 파일 첨부</SendButton>
-        <InputFile onChange={handleFile} type="file" id="ex_file" />  */}
-        
+        <SendButton title for="cover_file">+ 커버 이미지 추가</SendButton>
+        <InputFile onChange={this.handleFile_File} files={titleFile} accept='image/*' type='file' id='cover_file'></InputFile>
+       
+       <SendButton onClick={() => console.log(typeof( titleFile))}>실험</SendButton>
+
         <TextBlock>
           <TextArea type="text" placeholder="자세한 설명을 써 주시면 디자이너에게 도움이 된답니다!" />
         </TextBlock>
