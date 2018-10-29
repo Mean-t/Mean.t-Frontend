@@ -18,10 +18,10 @@ class StartFunding extends Component {
 
 const Container = styled.div`
   width : 100%;
-  height : 1846px;
+  height : 2372px;
   display : flex;
   justify-content: center;
-  margin-top : 30px;
+  align-items : center;
 `;
  
 export default StartFunding;
