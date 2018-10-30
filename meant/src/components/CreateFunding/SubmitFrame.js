@@ -6,31 +6,78 @@ class SubmitFrame extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      file : {}
+      Title : null,
+      hashTag : null,
+      text : null,
+      TitleFile : null,
      }
   }
-  render() {
-    
-  const handleFile = (e) => {
-    this.setState({file : e.target.file})
+
+  handleTitle = (e) => {
+    this.setState({
+      Title : e.target.value
+    });
   };
+  
+  handleHashTag = (e) => {
+    this.setState({
+      hashTag : e.target.value
+    });
+  };
+
+  handleText = (e) => {
+    this.setState({
+      text : e.target.value
+    });
+  };
+
+  enCodeBase64ImageFile = (image) => {
+    return new Promise((resolve, reject) => {
+      let leader = new FileReader();
+      leader.readAsDataURL(image);
+      leader.onload = (e) => resolve(e.target.result);
+      leader.onerror = (error) => reject(Error(error));
+    });
+  };
+
+  handleFile = async (e) => {
+    let fileList = e.target.files;
+    let file = fileList[0];
+
+    const data = await this.enCodeBase64ImageFile(file);
+    console.log('파일 : ', data);
+
+    this.setState({
+      TitleFile : data
+    });
+  };
+
+  isSubmit = () => {
+    const { Title, hashTag, text, TitleFile } = this.state;
+
+    if ((Title && hashTag && text && TitleFile) !== null)
+      return alert('제출이 완료되었습니다.');
+    else
+      return alert('항목을 체크해주세요!');
+  };
+  
+  render() {
+  const { Title, hashTag, text, TitleFile } = this.state;
 
     return(
       <Container>
-        <InputText type='text' placeholder="제목" />
+        <InputText onChange={this.handleTitle} type='text' placeholder="제목" />
         
-        <InputText type='text' placeholder="해시태그 추가" />
+        <InputText onChange={this.handleHashTag} type='text' placeholder="해시태그 추가" />
         
-        <SendButton for="ex_file">+ 파일 첨부</SendButton>
-        <InputFile onChange={handleFile} type="file" id="ex_file" /> 
+        <SendButton for="ex_file">{TitleFile === null ? '+ 파일 첨부' : '✓ 추가 성공'}</SendButton>
+        <InputFile onChange={(e) => this.handleFile(e)} type="file" id="ex_file" /> 
         
         <TextBlock>
-          <TextArea type="text" placeholder="자세한 설명을 써 주시면 디자이너에게 도움이 된답니다!" />
+          <TextArea onChange={this.handleText} type="text" placeholder="자세한 설명을 써 주시면 디자이너에게 도움이 된답니다!" />
         </TextBlock>
 
-        <div className='filter'></div>
-
-        <Link onClick={() => alert('제출이 완료되었습니다.')} to='/'>
+        <Link onClick={this.isSubmit} to={(Title && hashTag && text && TitleFile !== null) ? '/' : '/funding/create_idea'}>
           <ClearButton>제출하기</ClearButton>
         </Link>
       </Container>
@@ -40,13 +87,14 @@ class SubmitFrame extends Component {
 
 const Container = styled.div`
   width : 994px;
-  height : 943px;
+  height : 1100px;
   display : flex;
   flex-direction: column;
+  margin-top : 98px;
 `;
 
 const InputText = styled.input`
-  widht : 993px;
+  width : 993px;
   height : 70px;
   margin-bottom : 76px;
   text-decoration : none;
@@ -101,9 +149,10 @@ const InputFile = styled.input`
 
 const TextBlock = styled.div`
   width : 928px;
-  heigth : 382px;
+  height : 382px;
   border : 3px solid #40CD9F;
   padding : 30px;
+  margin-bottom : 62px;
 `;
 
 const TextArea = styled.textarea`
@@ -114,6 +163,7 @@ const TextArea = styled.textarea`
   text-decoration : none;
   border : none;
   font-family:'NanumSquareRound';
+  resize: none;
   &:focus {
     outline : none;
   }
