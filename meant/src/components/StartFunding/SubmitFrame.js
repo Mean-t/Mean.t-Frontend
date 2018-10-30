@@ -7,6 +7,12 @@ class SubmitFrame extends Component {
   constructor(props) {
     super(props);
     this.state = { 
+      title : null,
+      hashTag : null,
+      phoneNumber : null,
+      goal : null,
+      date : null,
+      account : null,
       titleFile : null,
       coverFile : null,
       FileDescription1 : null,
@@ -86,9 +92,55 @@ encodeBase64ImageFile = (image) => {
     })
   };
 
+  isSubmit = () => {
+    const { titleFile, coverFile, FileDescription1, FileDescription2, FileDescription3, title, hashTag, phoneNumber, goal, date, account } = this.state;
+
+    if (( titleFile && coverFile && FileDescription1 && FileDescription2 &&
+          FileDescription3 && title && hashTag && phoneNumber && goal && date && account ) !== null) 
+      return alert('제출이 완료되었습니다.');
+    else 
+      return alert('항목을 체크해주세요!');
+  };
+
+  isHandleTitle = (e) => {
+    this.setState({
+      title : e.target.value
+    })
+  };
+
+  isHandleHashTag = (e) => {
+    this.setState({
+      hashTag : e.target.value
+    })
+  };
+
+  isHandlePhoneNumber = (e) => {
+    this.setState({
+      phoneNumber : e.target.value
+    })
+  };
+
+  isHandleGoal = (e) => {
+    this.setState({
+      goal : e.target.value
+    })
+  };
+
+  isHandleDate = (e) => {
+    this.setState({
+      date : e.target.value
+    })
+  };
+
+  isHandleAccount = (e) => {
+    this.setState({
+      account : e.target.value
+    })
+  };
+
   render() {
 
-    const { titleFile, coverFile, FileDescription1, FileDescription2, FileDescription3 } = this.state;
+    const { titleFile, coverFile, FileDescription1, FileDescription2, FileDescription3, title, hashTag, phoneNumber, goal, date, account } = this.state;
 
     return(
       <Container>
@@ -103,17 +155,17 @@ encodeBase64ImageFile = (image) => {
         <InputFile title_btn onClick={e => e.target.value = null} onChange={e => this.handleFile_Title(e)} accept='image/*' type='file' ref='title_file' id='title_file' />
 
         <DivContainer text>
-          <InputText type='text' placeholder="제목" />
+          <InputText onChange={this.isHandleTitle} type='text' placeholder="제목" />
            
-          <InputText type='text' placeholder="해시태그 추가" />
+          <InputText onChange={this.isHandleHashTag} type='text' placeholder="해시태그 추가" />
           
-          <InputText type='text' placeholder="전화번호" />
+          <InputText onChange={this.isHandlePhoneNumber} type='text' placeholder="전화번호" />
 
-          <InputText type='text' placeholder="목표 금액" />
+          <InputText onChange={this.isHandleGoal} type='text' placeholder="목표 금액" />
 
-          <InputText type='text' placeholder="목표 기한 yyyy.mm.dd" />
+          <InputText onChange={this.isHandleDate} type='text' placeholder="목표 기한 yyyy.mm.dd" />
 
-          <InputText type='text' placeholder="계좌번호" />
+          <InputText onChange={this.isHandleAccount} type='text' placeholder="계좌번호" />
         </DivContainer>
 
         <MakeFileInput width='100%' inputId='cover_file' inputRef='cover_file' buttonFor='cover_file' handle = {e => this.handleFile_Cover(e)} mode = '+ 커버 이미지 추가' coverFile = {coverFile}/>
@@ -132,7 +184,9 @@ encodeBase64ImageFile = (image) => {
 
         <div className='filter'></div>
 
-        <Link onClick={() => alert('제출이 완료되었습니다.')} to='/'>
+        <Link onClick={this.isSubmit} to={( titleFile && coverFile && FileDescription1 && FileDescription2 &&
+                                            FileDescription3 && title && hashTag &&
+                                            phoneNumber && goal && date && account ) !== null ? '/' : '/funding/start'}>
           <ClearButton>제출하기</ClearButton>
         </Link>
       </Container>
@@ -240,6 +294,9 @@ const SendButton = styled.label`
 
 const InputFile = styled.input`
   &[type="file"] {
+    cursor : ${props => {
+      if(props.title_img) return 'pointer';
+    }};
     display:${props => {
       if(props.title_btn) return 'none';
       else if(props.cover_btn) return 'none';
