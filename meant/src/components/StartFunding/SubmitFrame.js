@@ -55,7 +55,7 @@ encodeBase64ImageFile = (image) => {
     let file = filelist[0];
 
     const data = await this.encodeBase64ImageFile(file);
-    console.log('커버 : ', data);
+    console.log('설명1 : ', data);
 
     this.setState({
       FileDescription1 : data
@@ -67,10 +67,10 @@ encodeBase64ImageFile = (image) => {
     let file = filelist[0];
 
     const data = await this.encodeBase64ImageFile(file);
-    console.log('커버 : ', data);
+    console.log('설명2 : ', data);
 
     this.setState({
-      FileDescription1 : data
+      FileDescription2 : data
     })
   };
 
@@ -79,10 +79,10 @@ encodeBase64ImageFile = (image) => {
     let file = filelist[0];
 
     const data = await this.encodeBase64ImageFile(file);
-    console.log('커버 : ', data);
+    console.log('설명3 : ', data);
 
     this.setState({
-      FileDescription1 : data
+      FileDescription3 : data
     })
   };
 
@@ -102,7 +102,7 @@ encodeBase64ImageFile = (image) => {
         }
         <InputFile title_btn onClick={e => e.target.value = null} onChange={e => this.handleFile_Title(e)} accept='image/*' type='file' ref='title_file' id='title_file' />
 
-        <div style={{marginBottom : '90px', width : '994px', height : '798px'}}>
+        <DivContainer text>
           <InputText type='text' placeholder="제목" />
            
           <InputText type='text' placeholder="해시태그 추가" />
@@ -114,13 +114,17 @@ encodeBase64ImageFile = (image) => {
           <InputText type='text' placeholder="목표 기한 yyyy.mm.dd" />
 
           <InputText type='text' placeholder="계좌번호" />
-        </div>
+        </DivContainer>
 
-        <MakeFileInput handle = {e => this.handleFile_Cover(e)} mode = '+ 커버 이미지 추가' coverFile = {coverFile}/>
+        <MakeFileInput width='100%' inputId='cover_file' inputRef='cover_file' buttonFor='cover_file' handle = {e => this.handleFile_Cover(e)} mode = '+ 커버 이미지 추가' coverFile = {coverFile}/>
 
-        <MakeFileInput handle = {e => this.FileDescription1_Cover(e)} mode = '+ 설명 이미지1 추가' coverFile = {FileDescription1}/>
-        <MakeFileInput handle = {e => this.FileDescription2_Cover(e)} mode = '+ 설명 이미지2 추가' coverFile = {FileDescription2}/>
-        <MakeFileInput handle = {e => this.FileDescription3_Cover(e)} mode = '+ 설명 이미지3 추가' coverFile = {FileDescription3}/>
+        <DivContainer file>
+          <MakeFileInput width='30%' inputId='FileDescription1_file' inputRef='FileDescription1_file' buttonFor='FileDescription1_file'  handle = {e => this.FileDescription1_Cover(e)} mode = '+ 설명 이미지1 추가' coverFile = {FileDescription1}/>
+          <div className='filter'></div>
+          <MakeFileInput width='30%' inputId='FileDescription2_file' inputRef='FileDescription2_file' buttonFor='FileDescription2_file'  handle = {e => this.FileDescription2_Cover(e)} mode = '+ 설명 이미지2 추가' coverFile = {FileDescription2}/>
+          <div className='filter'></div>
+          <MakeFileInput width='30%' inputId='FileDescription3_file' inputRef='FileDescription3_file' buttonFor='FileDescription3_file'  handle = {e => this.FileDescription3_Cover(e)} mode = '+ 설명 이미지3 추가' coverFile = {FileDescription3}/>
+        </DivContainer>
 
         <TextBlock>
           <TextArea type="text" placeholder="자세한 설명을 써 주시면 디자이너에게 도움이 된답니다!" />
@@ -144,10 +148,30 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const DivContainer = styled.div`
+  width : ${props => {
+    if(props.text) return '994px';
+    else if(props.file) return '100%';
+  }};
+  height : ${props => {
+    if(props.text) return '680px';
+  }};
+  display : ${props => {
+    if(props.file) return 'flex';
+  }};
+  margin-top : ${props => {
+    if(props.file) return '40px';
+  }};
+  margin-bottom : ${props => {
+    if(props.text) return '90px';
+    else if(props.file) return '70px';
+  }};
+`;
+
 const InputText = styled.input`
   width : 993px;
   height : 70px;
-  margin-bottom : 76px;
+  margin-bottom : 46px;
   text-decoration : none;
   border : none;
   border-bottom : 3px solid #40CD9F;
@@ -167,7 +191,8 @@ const ImageContainer = styled.div`
   position : relative;
   width : 273px;
   height : 273px;
-  border: 3px solid #40CD9F;
+  border: 5px solid #40CD9F;
+  margin-bottom : 32px;
   transition : 0.3s;
   display : flex;
   justify-content : center;
@@ -191,6 +216,7 @@ const SendButton = styled.label`
   font-size: 22px; 
   background-color: #FFFFFF;
   cursor: pointer; 
+  margin-bottom : 32px;
   border: 3px solid #40CD9F; 
   border-radius : ${props => {
     if(props.cover) return '60px';
