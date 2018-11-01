@@ -13,6 +13,7 @@ class SubmitFrame extends Component {
       goal : null,
       date : null,
       account : null,
+      textArea : null,
       titleFile : null,
       coverFile : null,
       FileDescription1 : null,
@@ -93,10 +94,10 @@ encodeBase64ImageFile = (image) => {
   };
 
   isSubmit = () => {
-    const { titleFile, coverFile, FileDescription1, FileDescription2, FileDescription3, title, hashTag, phoneNumber, goal, date, account } = this.state;
+    const { titleFile, coverFile, FileDescription1, FileDescription2, FileDescription3, title, hashTag, phoneNumber, goal, date, account, textArea } = this.state;
 
     if (( titleFile && coverFile && FileDescription1 && FileDescription2 &&
-          FileDescription3 && title && hashTag && phoneNumber && goal && date && account ) !== null) 
+          FileDescription3 && title && hashTag && phoneNumber && goal && date && account && textArea ) !== null) 
       return alert('제출이 완료되었습니다.');
     else 
       return alert('항목을 체크해주세요!');
@@ -138,9 +139,15 @@ encodeBase64ImageFile = (image) => {
     })
   };
 
+  isHandleTextArea = (e) => {
+    this.setState({
+      textArea : e.target.value
+    })
+  };
+
   render() {
 
-    const { titleFile, coverFile, FileDescription1, FileDescription2, FileDescription3, title, hashTag, phoneNumber, goal, date, account } = this.state;
+    const { titleFile, coverFile, FileDescription1, FileDescription2, FileDescription3, title, hashTag, phoneNumber, goal, date, account, textArea } = this.state;
 
     return(
       <Container>
@@ -179,14 +186,14 @@ encodeBase64ImageFile = (image) => {
         </DivContainer>
 
         <TextBlock>
-          <TextArea type="text" placeholder="자세한 설명을 써 주시면 디자이너에게 도움이 된답니다!" />
+          <TextArea onChange={this.isHandleTextArea} type="text" placeholder="자세한 설명을 써 주시면 디자이너에게 도움이 된답니다!" />
         </TextBlock>
 
         <div className='filter'></div>
 
         <Link onClick={this.isSubmit} to={( titleFile && coverFile && FileDescription1 && FileDescription2 &&
-                                            FileDescription3 && title && hashTag &&
-                                            phoneNumber && goal && date && account ) !== null ? '/' : '/funding/start'}>
+                                            FileDescription3 && title && hashTag && phoneNumber && goal && 
+                                            date && account && textArea ) !== null ? '/' : '/funding/start'}>
           <ClearButton>제출하기</ClearButton>
         </Link>
       </Container>
