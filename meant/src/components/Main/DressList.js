@@ -47,7 +47,6 @@ class DressList extends Component {
 }
 
 const Content = ({state}) => {
-  console.log(state)
   return(
     state !== 4 | 8 | 12 | 16 | 20 ? 
     <ContentContainer true>
@@ -107,7 +106,7 @@ const ContentContainer = styled.div`
   margin-right : ${props => {
     if (props.true) return '70px';
     else if (props.false) return '0';
-  }}
+  }};
 `;
 
 const ContentImage = styled.img`
@@ -132,7 +131,7 @@ const ContentText = styled.span`
   overflow: hidden; 
   text-overflow: ellipsis;
   white-space: pre-wrap;
-  display:-webkit-box;
+  display:box;
   -webkit-line-clamp:2;
   -webkit-box-orient:vertical;
 `;
@@ -144,7 +143,7 @@ const InformationButton = styled.div`
   border-radius : 60px;
   display : flex;
   justify-content: center;
-  color : black
+  color : black;
   font-size : 30px;
   align-items : center;
   transition : 0.3s;
