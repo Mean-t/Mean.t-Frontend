@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { TagClude } from './index';
 
 class DressIdeas extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class DressIdeas extends Component {
         <div className='filter'></div>
         
         <ListIdeas>
-          {}
+          <TagClude /> {/* 태크클라우드 목록 */}
         </ListIdeas>
         
         <div className='filter'></div>
@@ -59,7 +60,7 @@ const InformationButton = styled.div`
   border-radius : 60px;
   display : flex;
   justify-content: center;
-  color : black
+  color : black;
   font-size : 30px;
   align-items : center;
   transition : 0.3s;
