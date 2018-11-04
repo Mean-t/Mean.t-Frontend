@@ -7,7 +7,7 @@ class OrderNumber extends Component {
     super(props);
     this.state = {  }
   }
-  render() { 
+  render() {
     return ( 
       <Container>
         <Select />

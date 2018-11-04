@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import CircleContents from './CircleContents';
 import { Link } from 'react-router-dom';
-import { select } from '../../assets/assets'
 
 class Select extends Component {
   constructor(props) {
@@ -18,34 +17,12 @@ class Select extends Component {
     this.setState({OrderNumber : e.target.value});
   };
 
-  press = (e) => {
-
-    const { OrderNumber, SelectOnClick } = this.state;
-
-    if(e.key === "Enter")
-      if(OrderNumber !== 0) {
-        if(OrderNumber >= 100000 && OrderNumber <= 999999) {
-          this.setState({SelectOnClick : !SelectOnClick});
-        } else {
-          alert('정확한 번호를 입력해주세요.');
-        }
-      } else {
-        alert('주문번호를 입력해주세요.');
-      }
-  };
-
   render() {
-
-    const { OrderNumber, SelectOnClick, PerfectionGauge } = this.state;
+    const { orderNumber } = this.props.match.params;
+    const { OrderNumber, PerfectionGauge } = this.state;
 
     return ( 
       <React.Fragment>
-        {SelectOnClick === false ?
-          <SubmitFrame false>
-            <InputText onKeyPress={this.press} onChange={this.handleNumber} type='text' placeholder="주문번호" />
-            <SelectImage onClick={() => OrderNumber !== 0 ? OrderNumber >= 100000 && OrderNumber <= 999999 ? this.setState({SelectOnClick : !SelectOnClick}) : alert('정확한 번호를 입력해주세요.') : alert('주문번호를 입력해주세요.')} src={select} alt='돋보기'/>
-          </SubmitFrame> :
-
           <SubmitFrame true>
             <Text title>주문 번호</Text>
             <Text number>{OrderNumber}</Text>
@@ -78,7 +55,6 @@ class Select extends Component {
               <ReturnMain><span style={{display : 'inline-block'}}>메인으로 돌아가기</span></ReturnMain>
             </Link>
           </SubmitFrame>
-        }
       </React.Fragment>
       );
   }
@@ -106,39 +82,12 @@ const fadein = keyframes`
 `;
 
 const SubmitFrame = styled.div`
-  width : ${props => {if (props.false) return '993px'; else return '1492px'}};
-  height : ${props => {if (props.false) return '70px'; else return '574px'}};
-  border-bottom : ${props => {if (props.false) return '#40CD9F 3px solid'; else return 'none'}};
+  width : 1492px;
+  height : 574px;
   display : flex;
-  flex-direction: ${props => {if (props.false) return 'none'; else return 'column'}};
+  flex-direction: column;
   align-items : center;
-  animation : ${props => {
-    if (props.false) return `${pulse} 1s`;
-    else return `${fadein} 0.6s`;
-  }}
-`;
-
-const InputText = styled.input`
-  width : 938px;
-  height : 37px;
-  text-decoration : none;
-  border : none;
-  font-family:'NanumSquareRound';
-  font-size : 30px;
-  color : #40CD9F;
-  &:focus {
-    outline : none;
-  };
-  &::placeholder {
-    color: #40CD9F;
-    opacity: 1; /* Firefox */
-  };
-`;
-
-const SelectImage = styled.img`
-  width : 52px;
-  height : 52px;
-  cursor : pointer;
+  animation : ${fadein} 0.6s;
 `;
 
 const Text = styled.span`
